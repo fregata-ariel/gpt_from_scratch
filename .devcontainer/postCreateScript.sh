@@ -17,7 +17,7 @@ fi
 # Activate the virtual environment and install dependencies
 source ./.venv/bin/activate
 uv sync
-uv add torch numpy pandas matplotlib jupyerlab
+uv add torch numpy pandas matplotlib jupyterlab
 
 # add astral-uv venv activation to bashrc
 echo 'source ./.venv/bin/activate' >> ~/.bashrc
