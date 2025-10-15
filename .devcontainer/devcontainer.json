@@ -1,0 +1,27 @@
+{
+    "name": "Dev Container",
+    "build": {
+        "dockerfile": "./Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-themes",
+                "eamodio.gitlens",
+                "ms-azuretools.vscode-containers"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "remoteUser": "ubuntu",
+    "mounts": [
+        "source=${env:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
+    ],
+    "runArgs": [
+        "--env", "GPG_TTY=${containerEnv:GPG_TTY}"
+    ],
+    "postCreateCommand": "/bin/sh .devcontainer/postCreateScript.sh"
+}
