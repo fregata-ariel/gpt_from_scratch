@@ -8,10 +8,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
        #gcc needed for build_oai
        build-essential \
-       psmisc \
+       curl \
        git \
        gh \
        gpg \
+       openssh-client \
+       ca-certificates \
        #use gcc-12 to avoid problems of default gcc-11 in FlexRIC
        gdb \
        rr \
@@ -24,6 +26,9 @@ USER ubuntu
 # install astral uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/home/ubuntu/.local/bin:$PATH"
+
+# check nvidia-smi
+RUN echo $(nvidia-smi) > ~/nvidia-smi.out.txt
 
 # Set working directory
 WORKDIR /workspace

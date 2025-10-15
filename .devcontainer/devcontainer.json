@@ -21,7 +21,10 @@
         "source=${env:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
     ],
     "runArgs": [
-        "--env", "GPG_TTY=${containerEnv:GPG_TTY}"
+        "--env",
+        "GPG_TTY=${containerEnv:GPG_TTY}",
+        "--gpus",
+        "all"
     ],
     "postCreateCommand": "/bin/sh .devcontainer/postCreateScript.sh"
 }
