@@ -17,10 +17,13 @@ fi
 # Activate the virtual environment and install dependencies
 source ./.venv/bin/activate
 uv sync
-uv add torch numpy pandas matplotlib jupyterlab
+uv add torch numpy pandas matplotlib jupyterlab nbstripout
 
 # add astral-uv venv activation to bashrc
 echo 'source ./.venv/bin/activate' >> ~/.bashrc
 
 # check nvidia-smi
 echo $(nvidia-smi) > nvidia-smi.out.txt
+
+# set git attributes
+./.devcontainer/setGitAttributes.sh
