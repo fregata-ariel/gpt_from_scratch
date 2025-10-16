@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# # install astral-uv
-# curl -LsSf https://astral.sh/uv/install.sh | sh
-# PATH="/home/ubuntu/.local/bin:$PATH"
+# Install nbstripout to clean notebook outputs on commit
+nbstripout --install --attributes .gitattributes
 
 # Initialize repository as an astral-uv project if not already initialized
 if [ ! -f "./pyproject.toml" ]; then
@@ -17,13 +16,10 @@ fi
 # Activate the virtual environment and install dependencies
 source ./.venv/bin/activate
 uv sync
-uv add torch numpy pandas matplotlib jupyterlab nbstripout
+uv add torch numpy pandas matplotlib jupyterlab
 
 # add astral-uv venv activation to bashrc
 echo 'source ./.venv/bin/activate' >> ~/.bashrc
 
 # check nvidia-smi
 echo $(nvidia-smi) > nvidia-smi.out.txt
-
-# set git attributes
-./.devcontainer/setGitAttributes.sh
